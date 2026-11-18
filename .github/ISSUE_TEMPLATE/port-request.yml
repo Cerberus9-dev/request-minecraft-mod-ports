@@ -1,0 +1,110 @@
+name: Mod port request
+description: Request a Minecraft mod to be ported to another version or loader
+title: "[Port request] "
+labels: ["status: needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Permission proof is required. No porting work starts without it.**
+        See the README for what counts as proof. Requests without proof will be put on hold, and requests for All Rights Reserved mods without explicit author permission will be closed.
+  - type: input
+    id: mod-name
+    attributes:
+      label: Mod name
+      placeholder: Example Mod
+    validations:
+      required: true
+  - type: input
+    id: original-mod-link
+    attributes:
+      label: Link to the original mod
+      description: CurseForge, Modrinth, or GitHub link to the original mod.
+      placeholder: https://modrinth.com/mod/example-mod
+    validations:
+      required: true
+  - type: input
+    id: original-author
+    attributes:
+      label: Original author(s)
+      placeholder: Author username(s)
+    validations:
+      required: true
+  - type: input
+    id: current-version
+    attributes:
+      label: Minecraft version the mod is on now
+      placeholder: "1.20.1"
+    validations:
+      required: true
+  - type: input
+    id: target-version
+    attributes:
+      label: Minecraft version you want it ported to
+      placeholder: "1.21.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Loader
+      description: Which loader should the port target?
+      options:
+        - Fabric
+        - Forge
+        - NeoForge
+        - Quilt
+        - Not sure / any
+    validations:
+      required: true
+  - type: dropdown
+    id: original-license
+    attributes:
+      label: Original mod's license
+      description: Check the mod's page or source repo. If you don't know, pick "Unknown".
+      options:
+        - MIT
+        - Apache-2.0
+        - GPL-3.0
+        - LGPL
+        - BSD
+        - CC BY
+        - Other open license (name it below)
+        - All Rights Reserved
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: permission-proof
+    attributes:
+      label: Proof you are allowed to port it (REQUIRED)
+      description: |
+        Paste a link to the proof. This can be a link to the mod's license file, a public statement from the original author allowing ports/redistribution, or a screenshot/link to written permission from the author. "I couldn't reach the author" and "I think it's fine" do not count — no reply is not permission.
+      placeholder: |
+        License link: https://github.com/author/mod/blob/main/LICENSE
+        Author permission: https://link-to-public-statement-or-screenshot
+    validations:
+      required: true
+  - type: input
+    id: source-link
+    attributes:
+      label: Link to the mod's source code (if open source)
+      description: Leave blank if the mod is closed source.
+      placeholder: https://github.com/author/mod
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Extra details — e.g. a specific feature you need, a related mod, or why this version/loader matters.
+      placeholder: Any extra context
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have included proof of permission (a license link or explicit permission from the original author) above.
+          required: true
+        - label: I understand the request will be put on hold or closed if the proof is missing, insufficient, or the mod is All Rights Reserved without author permission.
+          required: true
+        - label: I understand the port, if made, will credit the original author and keep the original mod's license.
+          required: true
